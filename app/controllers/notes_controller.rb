@@ -5,7 +5,7 @@ class NotesController < ApplicationController
     
     def index
         #when you're @ index, there is code to go through all notes, this is what defines that (DESC = descending order)
-        @notes = Note.all.order("created_at DESC")
+        @notes = Note.where(user_id: current_user)
     end
 
     def show
@@ -13,7 +13,7 @@ class NotesController < ApplicationController
     end
 
     def new
-        
+        # changed @note = Note.new to this after installing Devise.
         @note = current_user.notes.build
     end
     
