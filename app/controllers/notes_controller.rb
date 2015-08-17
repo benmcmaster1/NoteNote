@@ -18,6 +18,7 @@ class NotesController < ApplicationController
     end
     
     def create
+        #only create a note for the current user (system is going by the current user ID)
          @note = current_user.notes.build(note_params)
          
          #if the note saved correctly
