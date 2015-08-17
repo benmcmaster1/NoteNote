@@ -34,11 +34,19 @@ class NotesController < ApplicationController
     end
     
     def update
+        # if the note you want to update has params, go to the note
+        if @note.update(note_params)
+            redirect_to @note
+            #otherwise, go to edit
+        else
+            render 'edit'
+        end
         
     end
     
     def destroy
-        
+        @note.destroy
+        redirect_to notes_path
     end
     
     private
