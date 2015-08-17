@@ -1,11 +1,9 @@
-%h1= @note.title
-%p= @note.content
-
-<!-- go to the base notes path for viewing all notes -->
-= link_to "All Notes", notes_path
-
-<!-- go to the edit note path of the current note -->
-= link_to "Edit", edit_note_path(@note)
-
-<!-- goes to the index path, taking with it the instruction to delete it with a confirmation -->
-= link_to "Delete", note_path(@note), method: :delete, data: {confirm: "Are you sure?"}
+.wrapper_with_padding
+    #note_show
+        %h1.title= @note.title
+        <!-- simple_format gives formatting to paragraphs -->
+        %p= simple_format(@note.content)
+        
+        .buttons
+            = link_to "Edit", edit_note_path(@note), class: "button"
+            = link_to "Delete", note_path(@note), method: :delete, data: {confirm: "Are you sure?"}, class: "button"
